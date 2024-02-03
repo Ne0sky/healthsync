@@ -37,7 +37,10 @@ const useGetDoctorByImage = () => {
             });
 
             setIsLoading(false);
-            console.log(response.data.specialist);
+            console.log(response.data);
+            const id = response.data.doctors[0]?._id;
+            localStorage.setItem('doctorId', id);
+            console.log(id);
             return response.data.specialist;
         } catch (error) {
             setIsLoading(false);

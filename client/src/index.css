@@ -7,3 +7,7 @@
 body{
   background-color: rgb(251, 250, 244);
 }
+
+.drop_area{
+  width: 100%;
+}

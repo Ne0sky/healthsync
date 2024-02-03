@@ -9,6 +9,7 @@ import './App.css'
 import SignupPatient from './pages/SignupPatient'
 import Dashboard from './pages/doctor/Dashboard'
 import Footer from './components/Footer'
+import Jitsi from './pages/Jitsi'
 
 function App() {
 
@@ -23,9 +24,9 @@ function App() {
         <Route path='/patient' element={<><Layout/><PatientLanding/></>}/>
         <Route path='/doctor' element={<><Layout/><Dashboard/></>}/>
         <Route path="*" element={<div> Not Found or You do not have permission.</div>}/>
-
+        <Route path='/meet/:id' element={<><Jitsi/></>}/>
       </Routes>
-      <Footer/>
+      {/* <Footer/> */}
     </Router>
     </>
   )
