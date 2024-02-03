@@ -8,8 +8,7 @@ import { useNavigate } from "react-router-dom"
 
 
 export const useDoctorSignup = () =>{
-    const [pwError, setPwError] = useState(null)
-    const [emailError, setEmailError] = useState(null)
+    const [error, setError] = useState(null)
     const [isLoading, setIsLoading] = useState(null)
     const {dispatch} = useAuthContext()
     const nav = useNavigate()
@@ -17,28 +16,27 @@ export const useDoctorSignup = () =>{
     const signup = async(email, name, phone, specialty, password)=>{
 
         setIsLoading(true);
-        setPwError(null)
-        setEmailError(null)
+        setError(null)
         const data={
-            'email' : email,
-            'name' : name,
-            'phone' : phone,
-            'specialty' : specialty,
-            'password' : password,
+            "email" : email,
+            "name" : name,
+            "phone" : phone,
+            "speciality" : specialty,
+            "password" : password,
         }
-        const response = await fetch(`auth/chef/`,{
+        console.log(data)
+        const response = await fetch(`https://health.clasher.ovh/register/doctor`,{
             method: 'POST',
             headers: {'Content-Type' : 'application/json'},
             body: JSON.stringify(data)
             })
 
             const json = await response.json()
-
+            console.log(json);
             if(!response.ok)
             {
                 setIsLoading(false)
-                setPwError(json.non_field_errors)
-                setEmailError(json.email)
+                setError(json.message)
             }
 
             if(response.ok)
@@ -54,8 +52,9 @@ export const useDoctorSignup = () =>{
 
                 setIsLoading(false)
                 toast.success("Sign Successfully")
+                nav('/doctor')
             }
     }
 
-    return {signup, isLoading, pwError, emailError}
+    return {signup, isLoading, error}
 }

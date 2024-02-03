@@ -13,7 +13,7 @@ export const usePatientSignup = () =>{
     const {dispatch} = useAuthContext()
     const nav = useNavigate()
 
-    const signup = async(email, name, phone, specialty, password)=>{
+    const signup = async(email, name, phone,  password)=>{
 
         setIsLoading(true);
         setPwError(null)
@@ -22,10 +22,9 @@ export const usePatientSignup = () =>{
             'email' : email,
             'name' : name,
             'phone' : phone,
-            'specialty' : specialty,
             'password' : password,
         }
-        const response = await fetch(`auth/chef/`,{
+        const response = await fetch('https://health.clasher.ovh/register/patient',{
             method: 'POST',
             headers: {'Content-Type' : 'application/json'},
             body: JSON.stringify(data)

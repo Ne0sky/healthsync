@@ -8,7 +8,7 @@ const SignupDoctor = () => {
   const [specialty, setSpecialty] = useState('');
   const [password, setPassword] = useState('');
 
-  const { signup,isLoading, pwError, emailError } = useDoctorSignup();
+  const { signup,isLoading, error} = useDoctorSignup();
 
   const handleSignup = async(e) => {
   e.preventDefault();
