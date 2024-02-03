@@ -7,6 +7,8 @@ import PatientLanding from './pages/patient/PatientLanding'
 import Layout from './Layout'
 import './App.css'
 import SignupPatient from './pages/SignupPatient'
+import About from './pages/About'
+import Reviews from './pages/Reviews'
 
 function App() {
 
@@ -19,6 +21,8 @@ function App() {
         <Route path='/signup/patient' element={<><Layout/><SignupPatient/></>} />
         <Route path='/login' element={<><Layout/><Login/></>}/>
         <Route path='/patient' element={<><Layout/><PatientLanding/></>}/>
+        <Route path='/about' element={<><Layout/><About/></>}/>
+        <Route path='/reviews' element={<><Layout/><Reviews/></>}/>
         <Route path="*" element={<div> Not Found or You do not have permission.</div>}/>
 
       </Routes>
