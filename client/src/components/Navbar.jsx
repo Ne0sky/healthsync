@@ -12,7 +12,7 @@ const Navbar = () => {
     }
   return (
     <div>
-      <div className="flex flex-row absolute top-0 w-full justify-between py-3 px-5 md:px-32 bg-white shadow-[0_3px_10px_rgb(0,0,0,0.2)]">
+      <div className="flex flex-row fixed top-0 w-full justify-between py-3 px-5 md:px-32 bg-white shadow-[0_3px_10px_rgb(0,0,0,0.2)]">
         <div>
           <L to="/" className="font-semibold text-2xl p-1 cursor-pointer">
             Health <span className="text-green-500">S</span>ync

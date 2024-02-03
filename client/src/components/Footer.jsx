@@ -3,9 +3,9 @@ import React from 'react'
 
 const Footer = () => {
     return (
-        <div className='bg-gray-800 text-white py-4'>
+        <div className='  py-4'>
             <div className='container mx-auto text-center'>
-                Footer
+                Zenith@2024 Diversion 2k24 
             </div>
         </div>
     );
