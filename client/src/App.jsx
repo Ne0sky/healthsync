@@ -8,10 +8,14 @@ import Layout from './Layout'
 import './App.css'
 import SignupPatient from './pages/SignupPatient'
 import Dashboard from './pages/doctor/Dashboard'
-import Footer from './components/Footer'
 import Jitsi from './pages/Jitsi'
+import { useAuthContext } from './hooks/useAuthContext'
+import PatientPrescription from './pages/patient/PatientPrescription'
 
 function App() {
+
+  const {user} = useAuthContext()
+  console.log(user);
 
   return (
     <>
@@ -21,10 +25,11 @@ function App() {
         <Route path='/signup/doctor' element={<><Layout/><SignupDoctor/></>} />
         <Route path='/signup/patient' element={<><Layout/><SignupPatient/></>} />
         <Route path='/login' element={<><Layout/><Login/></>}/>
-        <Route path='/patient' element={<><Layout/><PatientLanding/></>}/>
-        <Route path='/doctor' element={<><Layout/><Dashboard/></>}/>
+        <Route path='/patient' element={user && user.type==='patient'? <><Layout/><PatientLanding/></> : <div> Not Found or You do not have permission.</div>}/>
+        <Route path='/patient/prescriptions' element={user && user.type==='patient'? <><Layout/><PatientPrescription/></> : <div> Not Found or You do not have permission.</div>}/>
+        <Route path='/doctor' element={user && user.type==='doctor'? <><Layout/><Doctor/></> : <div> Not Found or You do not have permission.</div>}/>
         <Route path="*" element={<div> Not Found or You do not have permission.</div>}/>
-        <Route path='/meet/:id' element={<><Jitsi/></>}/>
+        <Route path='/meet/:id' element={user && user.type==='patient'? <><Jitsi/></> : <div> Not Found or You do not have permission.</div>}/>
       </Routes>
       {/* <Footer/> */}
     </Router>

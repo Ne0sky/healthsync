@@ -77,11 +77,11 @@ const Login = () => {
           >
             Login <IoLogInOutline className='text-2xl'/>
           </button>
-          <div className='py-4'>
+          <div className='py-4 text-center'>
           <p className='text-sm font-bold'>Don't have an accout ? Signup now  </p>
-          <div className='flex gap-2 py-2'>
-          <Link to='/signup/doctor'> <button className='bg-yellow-500 text-whte p-2 rounded-lg text-sm font-medium'> Doctor Signup </button></Link>
-          <Link to='/signup/doctor'> <button className='bg-yellow-500 text-whie p-2 rounded-lg text-sm font-medium'> Patient Signup </button></Link>
+          <div className='flex gap-2 justify-center w-full py-2'>
+          <Link to='/signup/doctor'> <button className='bg-lime-500 text-whte p-2 rounded-lg text-sm font-medium'> Doctor Signup </button></Link>
+          <Link to='/signup/patient'> <button className='bg-lime-500 text-whie p-2 rounded-lg text-sm font-medium'> Patient Signup </button></Link>
           </div>
           </div>
         </form>
