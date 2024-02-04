@@ -63,13 +63,7 @@ const SignupDoctor = () => {
     <option value="Speech-language pathologist">Speech-language pathologist</option>
     <option value="Psychiatrist">Psychiatrist</option>
       </select>
-      <input
-        className="border border-gray-300 rounded-md px-4 py-2 mb-2"
-        type="text"
-        placeholder="Specialty"
-        value={specialty}
-        onChange={(e) => setSpecialty(e.target.value)}
-      />
+      
       <input
         className="border border-gray-300 rounded-md px-4 py-2 mb-2"
         type="password"
