@@ -16,8 +16,8 @@ const Landing = () => {
       <div className='text-5xl font-bold py-8 flex items-center gap-2'><GiHospitalCross />HealthSync</div>
       <p className='font-medium text-3xl'>Empowering Remote Healthcare</p> <p className='text-xl'> Bridging Gaps, Connecting Lives.</p>
       <div className='py-8'>
-        <Link to='/signup/doctor'><button className='text font-semibold shadow shadow-blue-500 shadow-2xl bg-blue-300 p-3 border border-blue-700 rounded-2xl  hover:bg-blue-600 '>Register as a Doctor</button></Link>
-        <Link to='/signup/patient'><button className='text font-semibold shadow shadow-lime-500 shadow-2xl bg-lime-300 p-3 rounded-2xl border border-lime-700  hover:bg-lime-600 mx-4'>Register as a Patient</button></Link>
+        <Link to='/signup/doctor'><button className='text font-semibold shadow shadow-blue-200 shadow-2xl bg-blue-300 p-3 border border-blue-700 rounded-2xl  hover:bg-blue-600 '>Register as a Doctor</button></Link>
+        <Link to='/signup/patient'><button className='text font-semibold shadow shadow-lime-200 shadow-2xl bg-lime-300 p-3 rounded-2xl border border-lime-700  hover:bg-lime-600 mx-4'>Register as a Patient</button></Link>
       </div>
       <div className='flex justify-center items-center gap-2'>
         <div className='bg-white border-lime-600 shadow border p-4 rounded-xl h-48'>
