@@ -46,10 +46,10 @@ export const useDoctorSignup = () =>{
 
                 const cookies = new Cookies()
                 cookies.set('token', json.token, { expires: new Date(Date.now() + 7 * 24 * 60 * 60 * 1000) }) //expires in 7 days
-                localStorage.setItem('user', JSON.stringify(decodedData))
-                //update AuthContext
-                dispatch({type:'LOGIN', payload: decodedData})
-
+                localStorage.setItem('user', JSON.stringify({ ...json.data, type: decodedData.type }));
+            
+            //update AuthContext
+            dispatch({type:'LOGIN', payload: { ...json.data, type: decodedData.type }})
                 setIsLoading(false)
                 toast.success("Sign Successfully")
                 nav('/doctor')
