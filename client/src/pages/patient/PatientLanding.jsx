@@ -34,7 +34,7 @@ const PatientLanding = () => {
     e.preventDefault();
     console.log('connect clicked');
     const id = localStorage.getItem('doctorId')
-    nav(`/meet/${id}`)
+    window.open(`/meet/${id}`, '_blank');
 
   }
   

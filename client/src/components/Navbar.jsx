@@ -14,12 +14,14 @@ const Navbar = () => {
         await logout();
     }
 
-    const handleJoinMeet = async (e) =>{
+    const handleJoinMeet = async (e) => {
         e.preventDefault();
         const meetid = user?._id;
-        nav(`/meet/${meetid}`);
-
-    }
+        
+        // Use window.open to open a new tab with the specified meet URL
+        window.open(`/meet/${meetid}`, '_blank');
+      };
+      
 
   return (
     <div>
