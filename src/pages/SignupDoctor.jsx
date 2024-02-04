@@ -45,7 +45,7 @@ const SignupDoctor = () => {
         value={specialty}
         onChange={(e) => setSpecialty(e.target.value)}
       >
-        <<option value="General physician">General physician</option>
+        <option value="General physician">General physician</option>
     <option value="Primary care physician">Primary care physician</option>
     <option value="Pulmonologist">Pulmonologist</option>
     <option value="ENT specialist">ENT specialist</option>
