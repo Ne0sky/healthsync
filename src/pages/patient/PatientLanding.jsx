@@ -4,7 +4,7 @@ import { IoMdCloudUpload } from "react-icons/io";
 import { TbReportMedical } from "react-icons/tb";
 import { useState } from 'react';
 import { FileUploader } from "react-drag-drop-files";
-import useGetDoctorbySymptom from '../../hooks/useGetDoctorbySymptom'
+import useGetDoctorbySymptom from '../../hooks/useCreatePrescription'
 import useGetDoctorByImage from '../../hooks/useGetDoctorbyImage';
 import {useNavigate} from 'react-router-dom';
 
@@ -68,7 +68,7 @@ const PatientLanding = () => {
         )}
         {
           response && (
-             <div className='flex my-4   items-center'><button className='bg-lime-500 p-2 rounded shadow-md text-md font-medium' onClick={handleConnectClick}> Connect ! </button> <p className='px-2 text-sm font-sm'>with the available {response}</p></div>
+             <div className='flex my-4   items-center'><button className='bg-lime-500 p-2 rounded shadow-md text-md font-medium' onClick={handleConnectClick}> Connect  </button> <p className='px-2 text-sm font-sm'>with the available {response}</p></div>
           )}
       </div>
       </div>

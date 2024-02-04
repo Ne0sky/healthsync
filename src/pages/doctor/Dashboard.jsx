@@ -7,14 +7,14 @@ import ClearOutlinedIcon from '@mui/icons-material/ClearOutlined';
 import ArticleOutlinedIcon from '@mui/icons-material/ArticleOutlined';
 import { useAuthContext } from '../../hooks/useAuthContext';
 import { MdAccountCircle } from "react-icons/md";
-
+import useCreatePrescription from '../../hooks/useCreatePrescription';
 const Dashboard = () => {
     const {user} = useAuthContext();
-    // const { addPrescription, error } = useCreatePrescription();
+    const { addPrescription, error } = useCreatePrescription();
     const[doctorId, setDoctorId] = useState(user._id);
     const [patientId, setPatientId] = useState('');
     const [medications, setMedications] = useState([]);
-    const [medication, setMedication] = useState({ medication_name: '', dosage: '', instructions: '' });
+    const [medication, setMedication] = useState({ name: '', dosage: '', instructions: '' });
     const [prescriptionInstructions, setPrescriptionInstructions] = useState('');
 
     const handleInputChange = (event) => {
@@ -25,25 +25,25 @@ const Dashboard = () => {
     const handleAddMedication = () => {
         if (medication.name !== '' && medication.dosage !== '' && medication.instructions !== '') {
             setMedications([...medications, medication]);
-            setMedication({ medication_name: '', dosage: '', instructions: '' });
+            setMedication({ name: '', dosage: '', instructions: '' });
         }
     };
 
     const handleSubmit = async (event) => {
         event.preventDefault();
         const prescriptionData = {
-            patient_id: patientId,
-            medications,
-            instructions: prescriptionInstructions,
+            patient_email: patientId,
+            medication: medications,
+            diagnosis: prescriptionInstructions,
         };
         console.log(prescriptionData);
-        // await addPrescription(prescriptionData);
-        // if (!error) {
-        //     toast.success('Prescription added successfully');
-        //     resetForm();
-        // } else {
-        //     toast.error('Something went wrong');
-        // }
+        await addPrescription(prescriptionData);
+        if (!error) {
+            toast.success('Prescription added successfully');
+            resetForm();
+        } else {
+            toast.error('Something went wrong');
+        }
     };
 
     const handleDelete = (index) => {
@@ -55,7 +55,7 @@ const Dashboard = () => {
     const resetForm = () => {
         setPatientId('');
         setMedications([]);
-        setMedication({ medication_name: '', dosage: '', instructions: '' });
+        setMedication({ name: '', dosage: '', instructions: '' });
         setPrescriptionInstructions('');
     };
 
@@ -64,7 +64,7 @@ const Dashboard = () => {
             <div className='w-full h-[100%] bg-gradient-to-r from-lime-100 via-lime-00 to-transparent  p-4 rounded text-center flex flex-col  justify-center items-center'>
                 
                 <p className='text-2xl font-semibold py-8'>Welcome Dr.{user.name}, <br/> to your account</p>
-                <div className='bg-white p-8 w-1/2 rounded-xl shadow shadow-xl'>
+                <div className='bg-white border border-lime-700 p-8 w-1/2 rounded-xl shadow shadow-xl'>
                 {/* {doctorId && <p>Doctor ID: {doctorId}</p>} */}
                 {user && user.type==='doctor' &&(
                     <div className='py-4 rounded-xl flex flex-col justify-center items-center font-medium'>
@@ -81,16 +81,16 @@ const Dashboard = () => {
             </div>
             <div className='w-full flex items-center flex-col'>
             <h2 className='text-3xl py-4 font-medium'>Create a new Prescription</h2>
-            <form onSubmit={handleSubmit} className='flex rounded-md bg-lime-200 flex-col w-[360px] justify-center border border-lime-700 gap-4 items-center p-4'>
+            <form onSubmit={handleSubmit} className='flex rounded-md bg-lime-100 flex-col w-[360px] justify-center border border-lime-700 gap-4 items-center p-4'>
                 <ArticleOutlinedIcon style={{fontSize:'80px'}} />
                 <div className='w-full'>
-                <label className='font-medium' htmlFor="">Patient ID</label>
+                <label className='font-medium' htmlFor="">Patient Email</label>
                 <input
                     type="text"
                     name="patient_id"
                     value={patientId}
                     onChange={(event) => setPatientId(event.target.value)}
-                    placeholder="Patient ID"
+                    placeholder="Patient Email"
                     className='border border-zinc-500 focus:outline-none rounded-md w-full p-2'
                 />
                 </div>
@@ -100,7 +100,7 @@ const Dashboard = () => {
                     {medications.map((medication, index) => (
                         <div key={index} className='flex gap-2 bg-blue-200  border border-blue-800 rounded p-1'>
                             <div className='flex gap-2'>
-                                <p>{medication.medication_name}</p>
+                                <p>{medication.name}</p>
                                 <p>{medication.dosage}</p>
                                 <p>{medication.instructions}</p>
                             </div>
@@ -112,8 +112,8 @@ const Dashboard = () => {
                 <div className='w-full flex flex-col items-end gap-2'>
                     <input
                         type='text'
-                        name='medication_name'
-                        value={medication.medication_name}
+                        name='name'
+                        value={medication.name}
                         onChange={handleInputChange}
                         placeholder='Medication Name'
                         className='border w-full rounded-md border border-zinc-500 p-1'
@@ -142,7 +142,7 @@ const Dashboard = () => {
                     
                     <button
                         type='button'
-                        className='bg-green-200 border border-green-800 rounded-md w-1/3 text-center h-8 text-xl'
+                        className='bg-blue-200 border border-green-800 rounded-md w-1/3 text-center h-8 text-xl'
                         onClick={handleAddMedication}
                     >
                         +

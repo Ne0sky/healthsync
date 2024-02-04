@@ -46,8 +46,9 @@ export const useLogin = () =>{
             cookies.set('token', json.token, { expires: new Date(Date.now() + 7 * 24 * 60 * 60 * 1000) }) //expires in 7 days
             
             localStorage.setItem('user', JSON.stringify({ ...json.data, type: decodedData.type }));
+            
             //update AuthContext
-            dispatch({type:'LOGIN', payload: decodedData})
+            dispatch({type:'LOGIN', payload: { ...json.data, type: decodedData.type }})
             nav(`/${decodedData.type}`)
             setIsLoading(false)
             setError(null)

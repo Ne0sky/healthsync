@@ -40,6 +40,19 @@ const SignupDoctor = () => {
         value={phone}
         onChange={(e) => setPhone(e.target.value)}
       />
+      <select
+        className="border border-gray-300 rounded-md px-4 py-2 mb-2"
+        value={specialty}
+        onChange={(e) => setSpecialty(e.target.value)}
+      >
+        <option value="">Select Specialty</option>
+        <option value="gastroentologist">Gastroentologist</option>
+        <option value="cardiologist">Cardiologist</option>
+        <option value="dermatologist">Dermatologist</option>
+        <option value="neurologist">Neurologist</option>
+        <option value="orthopedic surgeon">Orthopedic Surgeon</option>
+        <option value="psychiatrist">Psychiatrist</option>
+      </select>
       <input
         className="border border-gray-300 rounded-md px-4 py-2 mb-2"
         type="text"
