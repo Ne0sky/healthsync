@@ -1,5 +1,7 @@
 import React, { useState } from 'react';
 import { useDoctorSignup } from '../hooks/useDoctorSignup';
+import TextField from '@mui/material/TextField';
+import { MdAccountCircle } from "react-icons/md";
 
 const SignupDoctor = () => {
   const [name, setName] = useState('');
@@ -18,30 +20,33 @@ const SignupDoctor = () => {
 
   return (
     <div className="flex flex-col items-center justify-center h-screen">
+      <div className='flex flex-col gap-4 w-1/4 bg-lime-100 rounded border p-4 border-lime-700'>
       <h2 className="text-2xl font-bold mb-4">Signup Doctor</h2>
-      <input
-        className="border border-gray-300 rounded-md px-4 py-2 mb-2"
+      <TextField
+        className="border bg-white border-gray-300 rounded-md px-4 py-2 mb-2"
         type="text"
-        placeholder="Name"
         value={name}
+        label="Name"
         onChange={(e) => setName(e.target.value)}
       />
-      <input
-        className="border border-gray-300 rounded-md px-4 py-2 mb-2"
+      <TextField
+        className="border bg-white border-gray-300 rounded-md px-4 py-2 mb-2"
         type="email"
-        placeholder="Email"
+  
         value={email}
+        label="Email"
         onChange={(e) => setEmail(e.target.value)}
       />
-      <input
-        className="border border-gray-300 rounded-md px-4 py-2 mb-2"
+      <TextField
+        label="Phone"
+        className="border bg-white border-gray-300 rounded-md px-4 py-2 mb-2"
         type="tel"
-        placeholder="Phone"
+     
         value={phone}
         onChange={(e) => setPhone(e.target.value)}
       />
       <select
-        className="border border-gray-300 rounded-md px-4 py-2 mb-2"
+        className="border bg-white border-gray-300 rounded-md px-4 py-2 mb-2"
         value={specialty}
         onChange={(e) => setSpecialty(e.target.value)}
       >
@@ -64,19 +69,21 @@ const SignupDoctor = () => {
     <option value="Psychiatrist">Psychiatrist</option>
       </select>
       
-      <input
-        className="border border-gray-300 rounded-md px-4 py-2 mb-2"
+      <TextField
+        label="Password"
+        className="border bg-white border-gray-300 rounded-md px-4 py-2 mb-2"
         type="password"
-        placeholder="Password"
+
         value={password}
         onChange={(e) => setPassword(e.target.value)}
       />
       <button
-        className="bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded"
+        className="bg-lime-600 w-full text-white font-bold py-2 px-4 rounded"
         onClick={handleSignup}
       >
         Signup
       </button>
+      </div>
     </div>
   );
 };
