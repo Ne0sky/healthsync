@@ -5,9 +5,13 @@ import React, { useState } from 'react';
 import toast from 'react-hot-toast';
 import ClearOutlinedIcon from '@mui/icons-material/ClearOutlined';
 import ArticleOutlinedIcon from '@mui/icons-material/ArticleOutlined';
+import { useAuthContext } from '../../hooks/useAuthContext';
+import { MdAccountCircle } from "react-icons/md";
 
 const Dashboard = () => {
+    const {user} = useAuthContext();
     // const { addPrescription, error } = useCreatePrescription();
+    const[doctorId, setDoctorId] = useState(user._id);
     const [patientId, setPatientId] = useState('');
     const [medications, setMedications] = useState([]);
     const [medication, setMedication] = useState({ medication_name: '', dosage: '', instructions: '' });
@@ -56,17 +60,31 @@ const Dashboard = () => {
     };
 
     return (
-        <div className='w-screen h-screen flex justify-around items-center gap-8'>
-            <div>
-                <p className='text-2xl font-bold'>Join a meeting</p>
+        <div className='max-w-screen font-main h-screen flex flex-col lg:flex-row pt-60 md:pt-40 lg:pt-10 justify-around gap-8  items-center '>
+            <div className='w-full h-[100%] bg-gradient-to-r from-lime-100 via-lime-00 to-transparent  p-4 rounded text-center flex flex-col  justify-center items-center'>
                 
+                <p className='text-2xl font-semibold py-8'>Welcome Dr.{user.name}, <br/> to your account</p>
+                <div className='bg-white p-8 w-1/2 rounded-xl shadow shadow-xl'>
+                {/* {doctorId && <p>Doctor ID: {doctorId}</p>} */}
+                {user && user.type==='doctor' &&(
+                    <div className='py-4 rounded-xl flex flex-col justify-center items-center font-medium'>
+                        <MdAccountCircle className='text-6xl'/>
+                        <ul>
+                            <li className='text-xl'>{user.name}</li>
+                            <li>{user.speciality}</li>
+                            <li>{user.email}</li>
+                        </ul>
+                    </div>
+
+                )}
             </div>
-            <div>
+            </div>
+            <div className='w-full flex items-center flex-col'>
             <h2 className='text-3xl py-4 font-medium'>Create a new Prescription</h2>
-            <form onSubmit={handleSubmit} className='flex rounded-md bg-zinc-100 flex-col w-[360px] justify-center gap-4 shadow-zinc-500 shadow-xl items-center p-4'>
+            <form onSubmit={handleSubmit} className='flex rounded-md bg-lime-200 flex-col w-[360px] justify-center border border-lime-700 gap-4 items-center p-4'>
                 <ArticleOutlinedIcon style={{fontSize:'80px'}} />
                 <div className='w-full'>
-                <label htmlFor="">Patient ID</label>
+                <label className='font-medium' htmlFor="">Patient ID</label>
                 <input
                     type="text"
                     name="patient_id"
@@ -77,7 +95,7 @@ const Dashboard = () => {
                 />
                 </div>
                 <div className='w-full'>
-                <label htmlFor="">Medications</label>
+                <label className='font-medium'  htmlFor="">Medications</label>
                 <div className='flex w-full flex-wrap gap-2'>
                     {medications.map((medication, index) => (
                         <div key={index} className='flex gap-2 bg-blue-200  border border-blue-800 rounded p-1'>
@@ -132,7 +150,7 @@ const Dashboard = () => {
                     </div>
                 </div>
                 <div className='w-full'>
-                <label  htmlFor="">Prescription Instructions</label>
+                <label className='font-medium'  htmlFor="">Prescription Instructions</label>
                 <input
                     type="text"
                     name="prescription_instructions"
@@ -142,7 +160,7 @@ const Dashboard = () => {
                     className='border w-full border-zinc-500 focus:outline-none rounded-md  p-2'
                 />
                 </div>
-                <button type="submit" className='submit_button w-full'>Submit</button>
+                <button type="submit" className='bg-lime-700 rounded text-white p-2 w-full'>Submit</button>
             </form>
             </div>
         </div>

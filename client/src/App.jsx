@@ -27,9 +27,9 @@ function App() {
         <Route path='/login' element={<><Layout/><Login/></>}/>
         <Route path='/patient' element={user && user.type==='patient'? <><Layout/><PatientLanding/></> : <div> Not Found or You do not have permission.</div>}/>
         <Route path='/patient/prescriptions' element={user && user.type==='patient'? <><Layout/><PatientPrescription/></> : <div> Not Found or You do not have permission.</div>}/>
-        <Route path='/doctor' element={user && user.type==='doctor'? <><Layout/><Doctor/></> : <div> Not Found or You do not have permission.</div>}/>
+        <Route path='/doctor' element={user && user.type==='doctor'? <><Layout/><Dashboard/></> : <div> Not Found or You do not have permission.</div>}/>
         <Route path="*" element={<div> Not Found or You do not have permission.</div>}/>
-        <Route path='/meet/:id' element={user && user.type==='patient'? <><Jitsi/></> : <div> Not Found or You do not have permission.</div>}/>
+        <Route path='/meet/:id' element={user && user.type==='patient' || 'doctor'? <><Jitsi/></> : <div> Not Found or You do not have permission.</div>}/>
       </Routes>
       {/* <Footer/> */}
     </Router>
