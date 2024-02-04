@@ -13,7 +13,7 @@ export const useDoctorSignup = () =>{
     const {dispatch} = useAuthContext()
     const nav = useNavigate()
 
-    const signup = async(email, name, phone, specialty, password)=>{
+    const signup = async(email, name, phone, speciality, password)=>{
 
         setIsLoading(true);
         setError(null)
@@ -21,7 +21,7 @@ export const useDoctorSignup = () =>{
             "email" : email,
             "name" : name,
             "phone" : phone,
-            "speciality" : specialty,
+            "speciality" : speciality,
             "password" : password,
         }
         console.log(data)
