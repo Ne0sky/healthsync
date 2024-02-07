@@ -12,7 +12,7 @@ const useGetPatientPrescription = () => {
         try {
             const cookies = new Cookies();
             const token = cookies.get('token');
-            const response = await fetch(`https://health.clasher.ovh/get_my_prescriptions`, {
+            const response = await fetch(`https://healthsync.duckdns.org/get_my_prescriptions`, {
                 method: 'GET',
                 headers: {
                     Authorization: `Bearer ${token}`
@@ -24,7 +24,6 @@ const useGetPatientPrescription = () => {
             }
 
             const data = await response.json();
-            console.log(data);
             const array = data.data;
             return array;
 

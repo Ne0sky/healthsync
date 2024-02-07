@@ -9,8 +9,7 @@ const useCreatePrescription = () => {
     const addPrescription = async (data) => {
         try {
             setLoading(true);
-            console.log(data);
-            const response = await fetch(`https://health.clasher.ovh/create_prescription`, {
+            const response = await fetch(`https://healthsync.duckdns.org/create_prescription`, {
                 method: 'POST',
                 headers: {
                     'Content-Type': 'application/json',
@@ -21,16 +20,12 @@ const useCreatePrescription = () => {
 
             if (response.ok) {
                 const data = await response.json();
-                console.log('Prescription added successfully');
-                console.log(data);
                 setError(null);
             } else {
                 const errorResponse = await response.json();
-                console.log('Prescription not added:', errorResponse.message);
                 setError(errorResponse.message);
             }
         } catch (error) {
-            console.log('Error:', error.message);
             setError('An error occurred');
         } finally {
             setLoading(false);

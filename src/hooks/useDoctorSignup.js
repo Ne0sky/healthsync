@@ -24,15 +24,13 @@ export const useDoctorSignup = () =>{
             "speciality" : speciality,
             "password" : password,
         }
-        console.log(data)
-        const response = await fetch(`https://health.clasher.ovh/register/doctor`,{
+        const response = await fetch(`https://healthsync.duckdns.org/register/doctor`,{
             method: 'POST',
             headers: {'Content-Type' : 'application/json'},
             body: JSON.stringify(data)
             })
 
             const json = await response.json()
-            console.log(json);
             if(!response.ok)
             {
                 setIsLoading(false)
