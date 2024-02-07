@@ -15,7 +15,6 @@ const SignupPatient = () => {
     
     const handleSignup = async (e) => {
         e.preventDefault();
-        console.log('SignupPatient:', name, email, phone, password, gender, birthdate);
         await signup(email, name, phone, password, gender, birthdate);
     };
 

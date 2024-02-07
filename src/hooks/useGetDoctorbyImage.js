@@ -8,15 +8,8 @@ const useGetDoctorByImage = () => {
 
     const getDoctorbyImage = async (imageFile, symptoms) => {
         try {
-            const url = 'https://health.clasher.ovh/analyze_disease';
-
-            // const cookies = document.cookie.split(';').reduce((cookies, cookie) => {
-            //     const [name, value] = cookie.split('=').map(c => c.trim());
-            //     cookies[name] = value;
-            //     return cookies;
-            // }, {});
+            const url = 'https://healthsync.duckdns.org/analyze_disease';
             const token = new Cookies().get('token');
-
             const headers = {
                 'Authorization': `Bearer ${token}`,
                 'Content-Type': 'multipart/form-data',
@@ -37,10 +30,8 @@ const useGetDoctorByImage = () => {
             });
 
             setIsLoading(false);
-            console.log(response.data);
             const id = response.data.doctors[0]?._id;
             localStorage.setItem('doctorId', id);
-            console.log("id", id);
             return response.data.specialist;
         } catch (error) {
             setIsLoading(false);

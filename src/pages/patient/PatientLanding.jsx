@@ -23,16 +23,12 @@ const PatientLanding = () => {
 
   const handleSubmit = async (e) => {
     e.preventDefault();
-    console.log('submitting form');
     const doctor = await getDoctorbyImage(file, symptoms)
-    console.log(doctor);
     setResponse(doctor);
-    console.log('response', response);
   };
 
   const handleConnectClick = (e) => {
     e.preventDefault();
-    console.log('connect clicked');
     const id = localStorage.getItem('doctorId')
     window.open(`/meet/${id}`, '_blank');
 

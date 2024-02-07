@@ -26,8 +26,7 @@ export const usePatientSignup = () =>{
             'sex' : gender,
             'dob' : birthDate,
         }
-        console.log(data);
-        const response = await fetch('https://health.clasher.ovh/register/patient',{
+        const response = await fetch('https://healthsync.duckdns.org/register/patient',{
             method: 'POST',
             headers: {'Content-Type' : 'application/json'},
             body: JSON.stringify(data)

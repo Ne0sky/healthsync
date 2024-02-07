@@ -15,7 +15,6 @@ import PatientPrescription from './pages/patient/PatientPrescription'
 function App() {
 
   const {user} = useAuthContext()
-  console.log(user);
 
   return (
     <>

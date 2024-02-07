@@ -12,7 +12,6 @@ const Navbar = () => {
     const {user} = useAuthContext();
     const {logout} = useLogout();
     const handleLogout = async() => {
-        console.log("logout");
         await logout();
     }
 

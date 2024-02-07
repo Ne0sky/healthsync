@@ -20,7 +20,7 @@ export const useLogin = () =>{
         }
 
         
-        const response = await fetch(`https://health.clasher.ovh/login/${type}`,{
+        const response = await fetch(`https://healthsync.duckdns.org/login/${type}`,{
             method: 'POST',
             headers: {'Content-Type' : 'application/json'},
             body: JSON.stringify(data)
@@ -32,15 +32,12 @@ export const useLogin = () =>{
         {
             setIsLoading(false)
             setError(json.message)
-            console.log(error);
-            console.log(json.message)
         }
 
         if(response.ok)
         {
             // Decode the JWT token
             const decodedData = jwtDecode(json.token)
-            console.log(json.data);
             // Save the decoded data to cookies
             const cookies = new Cookies()
             cookies.set('token', json.token, { expires: new Date(Date.now() + 7 * 24 * 60 * 60 * 1000) }) //expires in 7 days
