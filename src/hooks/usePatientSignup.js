@@ -57,5 +57,5 @@ export const usePatientSignup = () =>{
             }
     }
 
-    return {signup, isLoading, pwError, emailError}
+    return {signup, isLoading, emailError}
 }
