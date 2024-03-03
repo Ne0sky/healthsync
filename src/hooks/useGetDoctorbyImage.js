@@ -16,7 +16,6 @@ const useGetDoctorByImage = () => {
             //     return cookies;
             // }, {});
             const token = new Cookies().get('token');
-
             const headers = {
                 'Authorization': `Bearer ${token}`,
                 'Content-Type': 'multipart/form-data',
@@ -37,10 +36,8 @@ const useGetDoctorByImage = () => {
             });
 
             setIsLoading(false);
-            console.log(response.data);
             const id = response.data.doctors[0]?._id;
             localStorage.setItem('doctorId', id);
-            console.log("id", id);
             return response.data.specialist;
         } catch (error) {
             setIsLoading(false);

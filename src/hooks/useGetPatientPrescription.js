@@ -24,7 +24,6 @@ const useGetPatientPrescription = () => {
             }
 
             const data = await response.json();
-            console.log(data);
             const array = data.data;
             return array;
 

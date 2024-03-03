@@ -36,7 +36,6 @@ const Dashboard = () => {
             medication: medications,
             diagnosis: prescriptionInstructions,
         };
-        console.log(prescriptionData);
         await addPrescription(prescriptionData);
         if (!error) {
             toast.success('Prescription added successfully');

@@ -32,7 +32,6 @@ export const useDoctorSignup = () =>{
             })
 
             const json = await response.json()
-            console.log(json);
             if(!response.ok)
             {
                 toast.error(json.message)

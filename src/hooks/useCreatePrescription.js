@@ -28,12 +28,10 @@ const useCreatePrescription = () => {
                 setError(null);
             } else {
                 const errorResponse = await response.json();
-                console.log('Prescription not added:', errorResponse.message);
                 setError(errorResponse.message);
                 toast.error(errorResponse.message);
             }
         } catch (error) {
-            console.log('Error:', error.message);
             setError('An error occurred');
         } finally {
             setLoading(false);

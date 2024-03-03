@@ -9,7 +9,6 @@ const PatientPrescription = () => {
     useEffect(() => {
         const fetchData = async () => {
             const data = await getAllPrescription();
-            console.log(data);
             setPrescriptions(data);
             
         };

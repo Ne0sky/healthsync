@@ -42,7 +42,6 @@ export const useLogin = () =>{
         {
             // Decode the JWT token
             const decodedData = jwtDecode(json.token)
-            console.log(json.data);
             // Save the decoded data to cookies
             const cookies = new Cookies()
             cookies.set('token', json.token, { expires: new Date(Date.now() + 7 * 24 * 60 * 60 * 1000) }) //expires in 7 days
