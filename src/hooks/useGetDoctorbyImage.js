@@ -8,7 +8,7 @@ const useGetDoctorByImage = () => {
 
     const getDoctorbyImage = async (imageFile, symptoms) => {
         try {
-            const url = 'https://health.clasher.ovh/analyze_disease';
+            const url = 'https://healthsync-one.vercel.app/analyze_disease';
 
             // const cookies = document.cookie.split(';').reduce((cookies, cookie) => {
             //     const [name, value] = cookie.split('=').map(c => c.trim());

@@ -3,6 +3,7 @@ import { useAuthContext } from "./useAuthContext"
 import Cookies from "universal-cookie"
 import { jwtDecode } from 'jwt-decode'
 import { useNavigate } from "react-router-dom"
+import toast from "react-hot-toast"
 export const useLogin = () =>{
     const nav = useNavigate()
     const [error, setError] = useState(null)
@@ -20,7 +21,7 @@ export const useLogin = () =>{
         }
 
         
-        const response = await fetch(`https://health.clasher.ovh/login/${type}`,{
+        const response = await fetch(`https://healthsync-one.vercel.app/${type}`,{
             method: 'POST',
             headers: {'Content-Type' : 'application/json'},
             body: JSON.stringify(data)
@@ -34,6 +35,7 @@ export const useLogin = () =>{
             setError(json.message)
             console.log(error);
             console.log(json.message)
+            toast.error(json.message)
         }
 
         if(response.ok)

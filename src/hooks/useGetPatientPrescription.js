@@ -12,7 +12,7 @@ const useGetPatientPrescription = () => {
         try {
             const cookies = new Cookies();
             const token = cookies.get('token');
-            const response = await fetch(`https://health.clasher.ovh/get_my_prescriptions`, {
+            const response = await fetch(`https://healthsync-one.vercel.app/get_my_prescriptions`, {
                 method: 'GET',
                 headers: {
                     Authorization: `Bearer ${token}`

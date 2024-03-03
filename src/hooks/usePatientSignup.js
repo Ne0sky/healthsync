@@ -7,8 +7,8 @@ import { useNavigate } from "react-router-dom"
 
 
 export const usePatientSignup = () =>{
-    const [pwError, setPwError] = useState(null)
-    const [emailError, setEmailError] = useState(null)
+    const [error, setError] = useState(null)
+    
     const [isLoading, setIsLoading] = useState(null)
     const {dispatch} = useAuthContext()
     const nav = useNavigate()
@@ -16,8 +16,7 @@ export const usePatientSignup = () =>{
     const signup = async(email, name, phone,  password, gender, birthDate)=>{
 
         setIsLoading(true);
-        setPwError(null)
-        setEmailError(null)
+        setError(null)
         const data={
             'email' : email,
             'name' : name,
@@ -27,7 +26,7 @@ export const usePatientSignup = () =>{
             'dob' : birthDate,
         }
         console.log(data);
-        const response = await fetch('https://health.clasher.ovh/register/patient',{
+        const response = await fetch('https://healthsync-one.vercel.app/register/patient',{
             method: 'POST',
             headers: {'Content-Type' : 'application/json'},
             body: JSON.stringify(data)
@@ -37,9 +36,8 @@ export const usePatientSignup = () =>{
 
             if(!response.ok)
             {
-                setIsLoading(false)
-                setPwError(json.non_field_errors)
-                setEmailError(json.email)
+                setError(json.message)
+                toast.error(json.message)
             }
 
             if(response.ok)

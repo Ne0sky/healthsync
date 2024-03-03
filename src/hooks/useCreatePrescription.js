@@ -1,5 +1,6 @@
 
 import { useState } from 'react';
+import toast from 'react-hot-toast';
 import Cookies from 'universal-cookie';
 const useCreatePrescription = () => {
     const [error, setError] = useState(null);
@@ -10,7 +11,7 @@ const useCreatePrescription = () => {
         try {
             setLoading(true);
             console.log(data);
-            const response = await fetch(`https://health.clasher.ovh/create_prescription`, {
+            const response = await fetch(`https://healthsync-one.vercel.app/create_prescription`, {
                 method: 'POST',
                 headers: {
                     'Content-Type': 'application/json',
@@ -22,12 +23,14 @@ const useCreatePrescription = () => {
             if (response.ok) {
                 const data = await response.json();
                 console.log('Prescription added successfully');
+                toast.success('Prescription added successfully');
                 console.log(data);
                 setError(null);
             } else {
                 const errorResponse = await response.json();
                 console.log('Prescription not added:', errorResponse.message);
                 setError(errorResponse.message);
+                toast.error(errorResponse.message);
             }
         } catch (error) {
             console.log('Error:', error.message);

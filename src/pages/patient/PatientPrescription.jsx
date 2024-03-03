@@ -19,7 +19,8 @@ const PatientPrescription = () => {
     return (
         <div className='min-h-screen w-screen flex flex-col font-main justify-center items-center'>
             <h1 className='text-4xl flex items-center gap-2 py-8 font-semibold'>Prescriptions <GrDocumentCloud/></h1>
-            {   
+            {   prescriptions.length === 0 && <p>No prescriptions available</p>}
+            {   prescriptions.length > 0 &&
                 prescriptions.map((prescription) => {
                     return (
                         <div className='border flex flex-col justify-center rounded-xl shadow-md p-4 my-4'>

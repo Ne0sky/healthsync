@@ -25,7 +25,7 @@ export const useDoctorSignup = () =>{
             "password" : password,
         }
         console.log(data)
-        const response = await fetch(`https://health.clasher.ovh/register/doctor`,{
+        const response = await fetch(`https://healthsync-one.vercel.app/register/doctor`,{
             method: 'POST',
             headers: {'Content-Type' : 'application/json'},
             body: JSON.stringify(data)
@@ -35,6 +35,7 @@ export const useDoctorSignup = () =>{
             console.log(json);
             if(!response.ok)
             {
+                toast.error(json.message)
                 setIsLoading(false)
                 setError(json.message)
             }
