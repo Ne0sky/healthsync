@@ -11,7 +11,7 @@ const SignupPatient = () => {
     const [gender, setGender] = useState('');
     const [birthdate, setBirthdate] = useState('');
 
-    const { signup, isLoading, pwError, emailError } = usePatientSignup();
+    const { signup } = usePatientSignup();
     
     const handleSignup = async (e) => {
         e.preventDefault();
