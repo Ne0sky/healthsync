@@ -21,7 +21,7 @@ export const useLogin = () =>{
         }
 
         
-        const response = await fetch(`https://healthsync-one.vercel.app/${type}`,{
+        const response = await fetch(`https://healthsync-one.vercel.app/login/${type}`,{
             method: 'POST',
             headers: {'Content-Type' : 'application/json'},
             body: JSON.stringify(data)
@@ -36,6 +36,7 @@ export const useLogin = () =>{
             console.log(error);
             console.log(json.message)
             toast.error(json.message)
+            toast.error('Invalid credentials')
         }
 
         if(response.ok)
@@ -45,7 +46,7 @@ export const useLogin = () =>{
             // Save the decoded data to cookies
             const cookies = new Cookies()
             cookies.set('token', json.token, { expires: new Date(Date.now() + 7 * 24 * 60 * 60 * 1000) }) //expires in 7 days
-            
+            toast.success('Logged in successfully')
             localStorage.setItem('user', JSON.stringify({ ...json.data, type: decodedData.type }));
             
             //update AuthContext

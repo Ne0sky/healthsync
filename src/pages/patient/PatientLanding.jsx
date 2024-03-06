@@ -1,4 +1,4 @@
-import React from 'react'
+import React, { useEffect } from 'react'
 import TextField from '@mui/material/TextField';
 import { IoMdCloudUpload } from "react-icons/io";
 import { TbReportMedical } from "react-icons/tb";
@@ -33,6 +33,9 @@ const PatientLanding = () => {
     window.open(`/meet/${id}`, '_blank');
 
   }
+  useEffect(() => {
+    const doctor = getDoctorbyImage( file, 'test');
+  } , [])
   
   return (
     <div className='h-screen pt-20 overflow-x-hidden px-8 max-w-screen justiy-center items-center font-main flex flex-col'>
